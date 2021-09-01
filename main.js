@@ -6,8 +6,18 @@ const bot = new Telegraf(config.BOT_TOKEN);
 
 bot.start((ctx) => {
     try {
-        ctx.replyWithHTML(`<b>Hey, ${ctx.message.chat.first_name} 👋👋</b>\n\n<em>Welcome to <b>Weather Bot</b>.\n\nJust send your city or village's name & you will get the weather.\n\n@TGweatherrobot|@SBS_Studio</em>`)
-    } catch (e) {}
+        ctx.replyWithHTML(
+            "<b>Hey, ${ctx.message.chat.first_name} 👋👋</b>\n\n<em>Welcome to <b>Weather Bot</b>.\n\nJust send your city or village's name & you will get the weather.\n\n@TGweatherrobot|@SBS_Studio</em>",
+            Markup.inlineKeyboard([
+                [
+                    Markup.button.url("Update Channel 🗣", 'https://t.me/SBS_Studio'),
+                ],
+
+            ])
+        )
+    } catch (e) {
+        console.log(e)
+    }
 })
 
 
